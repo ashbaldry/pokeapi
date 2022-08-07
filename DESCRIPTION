@@ -1,0 +1,17 @@
+Package: pokeapi
+Type: Package
+Title: R wrapper for 'PokéAPI'
+Version: 0.1.0
+Authors@R: c(
+    person("Ashley", "Baldry", email = "arbaldry91@gmail.com", role = c("aut", "cre"))
+    )
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: MIT + file LICENCE
+Encoding: UTF-8
+Imports: httr2, rappdirs
+Suggests: polite
+RoxygenNote: 7.2.1
+Depends: 
+    R (>= 2.10)
+LazyData: true
