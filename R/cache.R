@@ -32,31 +32,41 @@ clear_pk_cache <- function(version = POKEAPI_VERSION) {
 check_pk_cache <- function(category, id) {
   if (use_pk_cache()) {
     id_num <- name_to_id(id, category)
-    file.exists(file.path(get_pk_cache(), category, id_num))
+    file.exists(get_pk_cache(category, paste0(id_num, ".rds")))
   } else {
     FALSE
   }
 }
 
 #' @noRd
-update_pk_cache <- function(pk_info, category, id) {
+read_pk_cache <- function(category, id) {
   id_num <- name_to_id(id, category)
-
-  cache_dir <- file.path(get_pk_cache(), category)
-  if (!dir.exists(cache_dir)) {
-    dir.create(cache_dir)
-  }
-
-  #TODO: save function - JSON or R list
+  cache_file <- get_pk_cache(category, paste0(id_num, ".rds"))
+  readRDS(cache_file)
 }
 
 #' @noRd
-get_pk_cache <- function(version = POKEAPI_VERSION) {
-  rappdirs::user_cache_dir(
+update_pk_cache <- function(pk_info, category, id) {
+  id_num <- name_to_id(id, category)
+
+  cache_dir <- get_pk_cache(category)
+  if (!dir.exists(cache_dir)) {
+    dir.create(cache_dir, recursive = TRUE)
+  }
+  cache_file <- file.path(cache_dir, paste0(id_num, ".rds"))
+
+  saveRDS(pk_info, cache_file)
+}
+
+#' @noRd
+get_pk_cache <- function(..., version = POKEAPI_VERSION) {
+  cache_dir <- rappdirs::user_cache_dir(
     appname = "pokeapi",
     appauthor = "r-pokeapi",
     version = paste0("v", version)
   )
+
+  file.path(cache_dir, ...)
 }
 
 #' @noRd
