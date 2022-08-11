@@ -21,7 +21,7 @@ clear_pk_cache <- function(version = POKEAPI_VERSION) {
   cache_dir <- get_pk_cache(version = version)
 
   if (dir.exists(cache_dir)) {
-    cache_files <- list.files(cache_dir, include.dirs = TRUE)
+    cache_files <- list.files(cache_dir, recursive = TRUE, full.names = TRUE)
     unlink(cache_files, recursive = TRUE, force = TRUE)
   } else {
     warning("Unable to find cached directory")
