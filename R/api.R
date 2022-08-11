@@ -12,19 +12,31 @@
 #' @param category Name of the category endpoint to pull data from
 #' @param id Either the numeric ID or the name of the item required from `category`
 #'
+#' @return
+#' A named list of all related data to the requested category and ID
+#'
+#' @examplesIf interactive()
+#' # Pokemon
+#' call_pk_api("pokemon", "bulbasaur")
+#'
+#' # Generation 7
+#' call_pk_api("generation", 7)
+#'
 #' @export
 call_pk_api <- function(category, id = NULL) {
-  if (check_pk_cache(category, id)) {
-    return(read_pk_cache(category, id))
+  id_num <- name_to_id(id, category)
+
+  if (check_pk_cache(category, id_num)) {
+    return(read_pk_cache(category, id_num))
   }
 
   response <- httr2::request(POKEAPI_BASE_URL) |>
-    httr2::req_url_path_append(category, id) |>
+    httr2::req_url_path_append(category, id_num) |>
     httr2::req_perform() |>
-    httr2::resp_body_json()
+    httr2::resp_body_json(simplifyVector = TRUE, simplifyDataFrame = TRUE)
 
   if (use_pk_cache()) {
-    update_pk_cache(response, category, id)
+    update_pk_cache(response, category, id_num)
   }
 
   response

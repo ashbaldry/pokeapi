@@ -1,6 +1,6 @@
 #' @noRd
 name_to_id <- function(id, category) {
-  if (is.numeric(id)) {
+  if (is.numeric(id) || is.null(id)) {
     id
   } else {
     find_numeric_id(id, category)
