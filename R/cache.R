@@ -22,7 +22,14 @@ clear_pk_cache <- function(version = POKEAPI_VERSION) {
 
   if (dir.exists(cache_dir)) {
     cache_files <- list.files(cache_dir, recursive = TRUE, full.names = TRUE)
-    unlink(cache_files, recursive = TRUE, force = TRUE)
+
+    sure <- ""
+    while (!sure %in% c("y", "Y", "N")) {
+      sure <- readline("Are you sure? (y/N): ")
+    }
+    if (sure %in% c("y", "Y")) {
+      unlink(cache_files, recursive = TRUE, force = TRUE)
+    }
   } else {
     warning("Unable to find cached directory")
   }
