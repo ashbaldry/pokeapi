@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-More about what it does (maybe more than one line) Use four spaces when indenting paragraphs within the Description.
+'PokéAPI' is a lightweight 'API' that allows the user to pull almost any information about 'Pokémon' one can think of. 'pokeapi' provides a wrapper for this 'API'.
 }
 \author{
 \strong{Maintainer}: Ashley Baldry \email{arbaldry91@gmail.com}

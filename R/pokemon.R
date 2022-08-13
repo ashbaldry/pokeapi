@@ -1,4 +1,4 @@
-#' Get Pokéinfo
+#' Get Pokémon Information
 #'
 #' @description
 #' A series of functions that pull data from the PokéAPI
@@ -22,31 +22,31 @@
 #'
 #' @seealso \url{https://pokeapi.co/docs/v2}
 #'
-#' @rdname pokeinfo
+#' @rdname pokemon
 #' @export
 get_pokemon <- function(id) {
   call_pk_api("pokemon", id)
 }
 
-#' @rdname pokeinfo
+#' @rdname pokemon
 #' @export
 get_pokemon_ability <- function(id) {
   call_pk_api("ability", id)
 }
 
-#' @rdname pokeinfo
+#' @rdname pokemon
 #' @export
 get_pokemon_characteristic <- function(id) {
   call_pk_api("characteristic", id)
 }
 
-#' @rdname pokeinfo
+#' @rdname pokemon
 #' @export
 get_egg_group <- function(id) {
   call_pk_api("egg-group", id)
 }
 
-#' @rdname pokeinfo
+#' @rdname pokemon
 #' @export
 get_pokemon_gender <- function(id) {
   call_pk_api("gender", id)
