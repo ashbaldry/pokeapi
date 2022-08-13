@@ -5,8 +5,9 @@ Version: 0.1.0
 Authors@R: c(
     person("Ashley", "Baldry", email = "arbaldry91@gmail.com", role = c("aut", "cre"))
     )
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: 'PokéAPI' is a lightweight 'API' that allows the user to pull almost any 
+    information about 'Pokémon' one can think of. 'pokeapi' provides a wrapper for this
+    'API'.
 License: MIT + file LICENCE
 Encoding: UTF-8
 Depends: R (>= 2.10)

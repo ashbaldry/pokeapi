@@ -1,3 +1,5 @@
-test_that("multiplication works", {
-  expect_equal(2 * 2, 4)
+test_that("clean_category works", {
+  expect_identical(clean_category("Pokemon"), "pokemon")
+  expect_identical(clean_category("PoKEmoN"), "pokemon")
+  expect_identical(clean_category("Evolution Chain"), "evolution-chain")
 })

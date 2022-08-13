@@ -1,3 +1,4 @@
+#' Find Category ID
 #' @noRd
 name_to_id <- function(id, category) {
   if (is.numeric(id) || is.null(id)) {
@@ -8,15 +9,15 @@ name_to_id <- function(id, category) {
 }
 
 #' @noRd
-find_numeric_id <- function(id_char, category) {
+find_numeric_id <- function(id_char, category, tolerance = 3) {
   category_clean <- clean_category(category)
   categories <- names(pk_ids)
 
   if (isFALSE(category_clean %in% categories)) {
     typo_dist <- adist(category_clean, categories)[1, ]
 
-    if (any(typo_dist == 1)) {
-      extra <- paste0(" Did you mean ", toString(categories[typo_dist == 1]), "?")
+    if (any(typo_dist == tolerance)) {
+      extra <- paste0(" Did you mean ", toString(categories[typo_dist <= tolerance]), "?")
     } else {
       extra <- ""
     }
@@ -32,8 +33,8 @@ find_numeric_id <- function(id_char, category) {
   } else {
     typo_dist <- adist(id_char, values)[1, ]
 
-    if (any(typo_dist == 1)) {
-      extra <- paste0(" Did you mean ", toString(values[typo_dist == 1]), "?")
+    if (any(typo_dist <= tolerance)) {
+      extra <- paste0(" Did you mean ", toString(values[typo_dist <= tolerance]), "?")
     } else {
       extra <- ""
     }
