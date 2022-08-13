@@ -1,3 +1,12 @@
+---
+title: "Introduction to PokéAPI"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to PokéAPI}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
 # PokéAPI <img src="https://raw.githubusercontent.com/ashbaldry/pokeapi/master/man/figures/logo.png" align="right" width="120"/>
 
 This is an R wrapper for [PokéAPI](https://pokeapi.co/)

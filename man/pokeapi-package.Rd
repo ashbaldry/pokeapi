@@ -6,6 +6,8 @@
 \alias{pokeapi-package}
 \title{pokeapi: R wrapper for 'PokéAPI'}
 \description{
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
 More about what it does (maybe more than one line) Use four spaces when indenting paragraphs within the Description.
 }
 \author{
