@@ -64,5 +64,9 @@ get_category_ids <- function(category, limit = 10000, offset = 0) {
 
   results <- response$results
   results$id <- as.integer(basename(results$url))
-  results[, c("id", "name", "url")]
+  if ("name" %in% names(results)) {
+    results[, c("id", "name", "url")]
+  } else {
+    results[, c("id", "url")]
+  }
 }

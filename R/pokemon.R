@@ -73,7 +73,7 @@ get_pokeathlon_stat <- function(id) {
 
 #' @rdname pokemon_info
 #' @export
-get_pokemon_location_areas <- function(id) {
+get_pokemon_location_area <- function(id) {
   call_pk_api("pokemon", id, "encounters")
 }
 

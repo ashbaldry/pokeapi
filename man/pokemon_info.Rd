@@ -10,7 +10,7 @@
 \alias{get_growth_rate}
 \alias{get_nature}
 \alias{get_pokeathlon_stat}
-\alias{get_pokemon_location_areas}
+\alias{get_pokemon_location_area}
 \alias{get_pokemon_colour}
 \alias{get_pokemon_color}
 \alias{get_pokemon_form}
@@ -37,7 +37,7 @@ get_nature(id)
 
 get_pokeathlon_stat(id)
 
-get_pokemon_location_areas(id)
+get_pokemon_location_area(id)
 
 get_pokemon_colour(id)
 

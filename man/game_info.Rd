@@ -5,7 +5,7 @@
 \alias{get_generation}
 \alias{get_pokedex}
 \alias{get_version}
-\alias{get_version_groups}
+\alias{get_version_group}
 \title{Get Games Information}
 \usage{
 get_generation(id)
@@ -14,7 +14,7 @@ get_pokedex(id)
 
 get_version(id)
 
-get_version_groups(id)
+get_version_group(id)
 }
 \arguments{
 \item{id}{Either the numeric ID of the required item from the category,

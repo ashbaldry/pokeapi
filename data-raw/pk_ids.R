@@ -12,8 +12,8 @@ groups <- c(
   "location", "location-area", "pal-park-area", "region",
   "move", "move-ailment", "move-battle-style", "move-category", "move-damage-class",
   "move-learn-method", "move-target",
-  "egg-group", "gender", "growth-rate", "nature", "pokeathlon-stat", "pokemon",
-  "pokemon-color", "pokemon-form", "pokemon-habitat", "pokemon-shape", "pokemon-species",
+  "ability", "egg-group", "gender", "growth-rate", "nature", "pokeathlon-stat",
+  "pokemon", "pokemon-color", "pokemon-form", "pokemon-habitat", "pokemon-shape", "pokemon-species",
   "stat", "type"
 )
 

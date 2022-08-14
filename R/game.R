@@ -35,6 +35,6 @@ get_version <- function(id) {
 
 #' @rdname game_info
 #' @export
-get_version_groups <- function(id) {
+get_version_group <- function(id) {
   call_pk_api("version-group", id)
 }
