@@ -95,7 +95,7 @@ get_pokemon(1)
 For each endpoint, there is a resource list, that returns a list of URLS that can be used to pull each resource for the selected API. To make it easier, only the name and ID will be returned, so that they can easily be fed into the individual functions
 
 ```r
-get_resource_ids("pokemon")
+get_category_ids("pokemon")
 ```
 
 ### Caching
