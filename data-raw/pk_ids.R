@@ -1,6 +1,5 @@
 ## code to prepare `DATASET` dataset goes here
 devtools::load_all()
-req <- httr2::request(POKEAPI_BASE_URL)
 
 # Going by API v2 Docs
 groups <- c(
@@ -21,17 +20,7 @@ groups <- c(
 pk_ids <- lapply(groups, \(group) {
   Sys.sleep(2)
   cat(group, "\n")
-  pokemon_res <- req |>
-    httr2::req_url_path_append(group) |>
-    httr2::req_url_query(limit = 100000, offset = 0) |>
-    httr2::req_perform()
-
-  pokemon <- pokemon_res |>
-    httr2::resp_body_json(simplifyDataFrame = TRUE) |>
-    (\(x) x$results)()
-  pokemon$id <- as.integer(basename(pokemon$url))
-  pokemon <- pokemon[, c("id", "name")]
-  pokemon
+  get_category_ids(group)[, c("id", "name")]
 })
 pk_ids <- setNames(pk_ids, groups)
 

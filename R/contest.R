@@ -17,6 +17,7 @@
 #'
 #' @seealso \url{https://pokeapi.co/docs/v2#contests-section}
 #'
+#' @encoding UTF-8
 #' @rdname contest_info
 #' @export
 get_contest_type <- function(id) {

@@ -14,6 +14,7 @@
 #'
 #' @seealso \url{https://pokeapi.co/docs/v2#items-section}
 #'
+#' @encoding UTF-8
 #' @rdname item_info
 #' @export
 get_item <- function(id) {

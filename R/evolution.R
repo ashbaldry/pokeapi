@@ -18,6 +18,7 @@
 #'
 #' @seealso \url{https://pokeapi.co/docs/v2#evolutions-section}
 #'
+#' @encoding UTF-8
 #' @rdname evolution_info
 #' @export
 get_evolution_chain <- function(id) {

@@ -24,10 +24,10 @@ clear_pk_cache <- function(version = POKEAPI_VERSION) {
     cache_files <- list.files(cache_dir, recursive = TRUE, full.names = TRUE)
 
     sure <- ""
-    while (!sure %in% c("y", "Y", "N")) {
-      sure <- readline("Are you sure? (y/N): ")
+    while (!sure %in% c("Y", "n", "N")) {
+      sure <- readline("Are you sure? (Y/n): ")
     }
-    if (sure %in% c("y", "Y")) {
+    if (sure == "Y") {
       unlink(cache_files, recursive = TRUE, force = TRUE)
     }
   } else {
@@ -36,27 +36,27 @@ clear_pk_cache <- function(version = POKEAPI_VERSION) {
 }
 
 #' @noRd
-check_pk_cache <- function(category, id) {
+check_pk_cache <- function(category, id, subcategory = NULL) {
   if (use_pk_cache()) {
     id_num <- name_to_id(id, category)
-    file.exists(get_pk_cache(category, paste0(id_num, ".rds")))
+    file.exists(get_pk_cache(category, paste0(id_num, ".rds"), subcategory))
   } else {
     FALSE
   }
 }
 
 #' @noRd
-read_pk_cache <- function(category, id) {
+read_pk_cache <- function(category, id, subcategory = NULL) {
   id_num <- name_to_id(id, category)
-  cache_file <- get_pk_cache(category, paste0(id_num, ".rds"))
+  cache_file <- get_pk_cache(category, paste0(id_num, ".rds"), subcategory)
   readRDS(cache_file)
 }
 
 #' @noRd
-update_pk_cache <- function(pk_info, category, id) {
+update_pk_cache <- function(pk_info, category, id, subcategory = NULL) {
   id_num <- name_to_id(id, category)
 
-  cache_dir <- get_pk_cache(category)
+  cache_dir <- get_pk_cache(category, subcategory)
   if (!dir.exists(cache_dir)) {
     dir.create(cache_dir, recursive = TRUE)
   }
@@ -73,7 +73,10 @@ get_pk_cache <- function(..., version = POKEAPI_VERSION) {
     version = paste0("v", version)
   )
 
-  file.path(cache_dir, ...)
+  subdir <- list(...)
+  subdir <- subdir[!vapply(subdir, is.null, logical(1))]
+
+  do.call(file.path, c(list(cache_dir), subdir))
 }
 
 #' @noRd

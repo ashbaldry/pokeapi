@@ -11,18 +11,7 @@ name_to_id <- function(id, category) {
 #' @noRd
 find_numeric_id <- function(id_char, category, tolerance = 3) {
   category_clean <- clean_category(category)
-  categories <- names(pk_ids)
-
-  if (isFALSE(category_clean %in% categories)) {
-    typo_dist <- adist(category_clean, categories)[1, ]
-
-    if (any(typo_dist == tolerance)) {
-      extra <- paste0(" Did you mean ", toString(categories[typo_dist <= tolerance]), "?")
-    } else {
-      extra <- ""
-    }
-    stop("Unable to find selected category.", extra)
-  }
+  check_category(category_clean)
 
   category_df <- pk_ids[[category_clean]]
   values <- category_df$name
@@ -38,6 +27,22 @@ find_numeric_id <- function(id_char, category, tolerance = 3) {
     } else {
       extra <- ""
     }
-    stop("Unable to find ",  id_char, " in the ", category, " dataset.", extra)
+    stop("Unable to find ",  id_char, " in the ", category, " category.", extra)
+  }
+}
+
+#' @noRd
+check_category <- function(category) {
+  categories <- names(pk_ids)
+
+  if (isFALSE(category %in% categories)) {
+    typo_dist <- adist(category, categories)[1, ]
+
+    if (any(typo_dist == tolerance)) {
+      extra <- paste0(" Did you mean ", toString(categories[typo_dist <= tolerance]), "?")
+    } else {
+      extra <- ""
+    }
+    stop("Unable to find selected category.", extra)
   }
 }

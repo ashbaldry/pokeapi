@@ -14,6 +14,7 @@
 #'
 #' @seealso \url{https://pokeapi.co/docs/v2#encounters-section}
 #'
+#' @encoding UTF-8
 #' @rdname encounter_info
 #' @export
 get_encounter_method <- function(id) {

@@ -14,6 +14,7 @@
 #'
 #' @seealso \url{https://pokeapi.co/docs/v2#berries-section}
 #'
+#' @encoding UTF-8
 #' @rdname berry_info
 #' @export
 get_berry <- function(id) {

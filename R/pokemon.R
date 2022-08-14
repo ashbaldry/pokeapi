@@ -20,34 +20,108 @@
 #' # ID
 #' get_pokemon(1)
 #'
-#' @seealso \url{https://pokeapi.co/docs/v2}
+#' @seealso \url{https://pokeapi.co/docs/v2#pokemon-section}
 #'
-#' @rdname pokemon
+#' @encoding UTF-8
+#' @rdname pokemon_info
 #' @export
 get_pokemon <- function(id) {
   call_pk_api("pokemon", id)
 }
 
-#' @rdname pokemon
+#' @rdname pokemon_info
 #' @export
-get_pokemon_ability <- function(id) {
+get_ability <- function(id) {
   call_pk_api("ability", id)
 }
 
-#' @rdname pokemon
+#' @rdname pokemon_info
 #' @export
-get_pokemon_characteristic <- function(id) {
+get_characteristic <- function(id) {
   call_pk_api("characteristic", id)
 }
 
-#' @rdname pokemon
+#' @rdname pokemon_info
 #' @export
 get_egg_group <- function(id) {
   call_pk_api("egg-group", id)
 }
 
-#' @rdname pokemon
+#' @rdname pokemon_info
 #' @export
-get_pokemon_gender <- function(id) {
+get_gender <- function(id) {
   call_pk_api("gender", id)
 }
+
+#' @rdname pokemon_info
+#' @export
+get_growth_rate <- function(id) {
+  call_pk_api("growth-rate", id)
+}
+
+#' @rdname pokemon_info
+#' @export
+get_nature <- function(id) {
+  call_pk_api("nature", id)
+}
+
+#' @rdname pokemon_info
+#' @export
+get_pokeathlon_stat <- function(id) {
+  call_pk_api("pokeathlon-stat", id)
+}
+
+#' @rdname pokemon_info
+#' @export
+get_pokemon_location_areas <- function(id) {
+  call_pk_api("pokemon", id, "encounters")
+}
+
+#' @rdname pokemon_info
+#' @export
+get_pokemon_colour <- function(id) {
+  call_pk_api("pokemon-color", id)
+}
+
+#' @rdname pokemon_info
+#' @export
+get_pokemon_color <- function(id) {
+  call_pk_api("pokemon-color", id)
+}
+
+#' @rdname pokemon_info
+#' @export
+get_pokemon_form <- function(id) {
+  call_pk_api("pokemon-form", id)
+}
+
+#' @rdname pokemon_info
+#' @export
+get_pokemon_habitat <- function(id) {
+  call_pk_api("pokemon-habitat", id)
+}
+
+#' @rdname pokemon_info
+#' @export
+get_pokemon_shape <- function(id) {
+  call_pk_api("pokemon-shape", id)
+}
+
+#' @rdname pokemon_info
+#' @export
+get_pokemon_species <- function(id) {
+  call_pk_api("pokemon-species", id)
+}
+
+#' @rdname pokemon_info
+#' @export
+get_stat <- function(id) {
+  call_pk_api("stat", id)
+}
+
+#' @rdname pokemon_info
+#' @export
+get_type <- function(id) {
+  call_pk_api("type", id)
+}
+

@@ -14,6 +14,7 @@
 #'
 #' @seealso \url{https://pokeapi.co/docs/v2#games-section}
 #'
+#' @encoding UTF-8
 #' @rdname game_info
 #' @export
 get_generation <- function(id) {

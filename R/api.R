@@ -11,6 +11,8 @@
 #'
 #' @param category Name of the category endpoint to pull data from
 #' @param id Either the numeric ID or the name of the item required from `category`
+#' @param subcategory For the Pokémon category, there are some subcategories like
+#' `"encounter"`. Most endpoints do not have one, so the default is `NULL`
 #'
 #' @return
 #' A named list of all related data to the requested category and ID
@@ -22,27 +24,45 @@
 #' # Generation 7
 #' call_pk_api("generation", 7)
 #'
-#' @export
-call_pk_api <- function(category, id = NULL) {
-  id_num <- name_to_id(id, category)
+#' @encoding UTF-8
+call_pk_api <- function(category, id = NULL, subcategory = NULL) {
+  category_clean <- clean_category(category)
+  check_category(category_clean)
 
-  if (check_pk_cache(category, id_num)) {
-    return(read_pk_cache(category, id_num))
+  id_num <- name_to_id(id, category_clean)
+  subcategory_clean <- clean_category(subcategory)
+
+  if (check_pk_cache(category_clean, id_num, subcategory_clean)) {
+    return(read_pk_cache(category_clean, id_num, subcategory_clean))
   }
 
   response <- httr2::request(POKEAPI_BASE_URL) |>
-    httr2::req_url_path_append(category, id_num) |>
+    httr2::req_url_path_append(category_clean, id_num, subcategory_clean) |>
     httr2::req_perform() |>
-    httr2::resp_body_json(simplifyVector = TRUE, simplifyDataFrame = TRUE)
+    httr2::resp_body_json()
 
   if (use_pk_cache()) {
-    update_pk_cache(response, category, id_num)
+    update_pk_cache(response, category_clean, id_num, subcategory_clean)
   }
 
   response
 }
 
+#' Get Category IDs
+#'
+#'
 #' @export
-call_pk_resource_list <- function(endpoint, limit, offset) {
+get_category_ids <- function(category, limit = 10000, offset = 0) {
+  category_clean <- clean_category(category)
+  check_category(category_clean)
 
+  response <- httr2::request(POKEAPI_BASE_URL) |>
+    httr2::req_url_path_append(category_clean) |>
+    httr2::req_url_query(limit = limit, offset = offset) |>
+    httr2::req_perform() |>
+    httr2::resp_body_json(simplifyDataFrame = TRUE)
+
+  results <- response$results
+  results$id <- as.integer(basename(results$url))
+  results[, c("id", "name", "url")]
 }
