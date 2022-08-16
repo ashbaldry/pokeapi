@@ -9,7 +9,7 @@ test_that("All API endpoint calls work", {
     Sys.sleep(2)
     cat(endpoint_call, "\n")
 
-    endpoint_func <- getFromNamespace(endpoint_call, "package:pokeapi")
+    endpoint_func <- getFromNamespace(endpoint_call, "pokeapi")
     response <- endpoint_func(1)
 
     expect_type(response, "list")
