@@ -12,7 +12,11 @@ License: MIT + file LICENCE
 Encoding: UTF-8
 Depends: R (>= 2.10)
 Imports: httr2, rappdirs
-Suggests: knitr, rmarkdown, testthat (>= 3.0.0)
+Suggests: 
+    covr,
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
 RoxygenNote: 7.2.1
 Config/testthat/edition: 3
 VignetteBuilder: knitr

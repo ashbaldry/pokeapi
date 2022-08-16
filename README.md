@@ -1,5 +1,10 @@
 # PokéAPI <img src="https://raw.githubusercontent.com/ashbaldry/pokeapi/master/man/figures/logo.png" align="right" width="120"/>
 
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/ashbaldry/pokeapi/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ashbaldry/pokeapi/actions/workflows/R-CMD-check.yaml)
+[![Codecov test coverage](https://codecov.io/gh/ashbaldry/pokeapi/branch/main/graph/badge.svg)](https://app.codecov.io/gh/ashbaldry/pokeapi?branch=main)
+<!-- badges: end -->
+
 This is an R wrapper for [PokéAPI](https://pokeapi.co/)
 
 ## Insatllation
