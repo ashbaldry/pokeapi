@@ -20,3 +20,20 @@ test_that("name_to_id returns provides a potential result if the name is similar
   expect_error(name_to_id("bulbasore", "pokemon"), "bulbasaur")
   expect_error(find_numeric_id("bulbasore", "pokemon", 2), ".*(?!bulbasaur)", perl = TRUE)
 })
+
+test_that("check_category returns no error if category exists", {
+  expect_error(check_category("pokemon"), NA)
+  expect_error(check_category("super-contest-effect"), NA)
+})
+
+test_that("check_category returns error if category doesn't exist", {
+  expect_error(check_category("dsfsdfdsfsdf"))
+})
+
+test_that("check_category returns error if category exists, but doesn't include names", {
+  expect_error(check_category("super-contest-effect", named = TRUE))
+})
+
+test_that("check_category returns a potential solution if it finds a similar name", {
+  expect_error(check_category("pokkemon"), "pokemon")
+})

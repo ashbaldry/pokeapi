@@ -96,8 +96,8 @@ list_categories <- function() {
   categories <- vapply(
     names(CATEGORIES_LIST),
     \(x) {
-      category <- paste0(x, ": ", toString(CATEGORIES_LIST[[x]]))
-      category <- strwrap(category, exdent = nchar(x) + 2)
+      category <- paste0("* ", x, ": ", toString(CATEGORIES_LIST[[x]]))
+      category <- strwrap(category, exdent = nchar(x) + 4)
       paste(category, collapse = "\n")
     },
     character(1)

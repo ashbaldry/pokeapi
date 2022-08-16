@@ -42,7 +42,7 @@ check_category <- function(category, tolerance = 3, named = FALSE) {
   if (isFALSE(category %in% categories)) {
     typo_dist <- adist(category, categories)[1, ]
 
-    if (any(typo_dist == tolerance)) {
+    if (any(typo_dist <= tolerance)) {
       extra <- paste0(" Did you mean ", toString(categories[typo_dist <= tolerance]), "?")
     } else {
       extra <- ""
