@@ -124,4 +124,3 @@ get_stat <- function(id) {
 get_type <- function(id) {
   call_pk_api("type", id)
 }
-
