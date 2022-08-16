@@ -2,10 +2,35 @@
 % Please edit documentation in R/api.R
 \name{get_category_ids}
 \alias{get_category_ids}
+\alias{list_categories}
 \title{Get Category IDs}
 \usage{
 get_category_ids(category, limit = 10000, offset = 0)
+
+list_categories()
+}
+\arguments{
+\item{category}{Name of the endpoint}
+
+\item{limit}{Maximum number of IDs to pull. Default is `10000`}
+
+\item{offset}{Number to offset from first ID. Default is `0`}
 }
 \description{
-Get Category IDs
+Find all available IDs of a particular categery/endpoint
+}
+\details{
+The default limit and offset values should be enough for you
+to pull all of the required IDs of any category.
+
+To see a list of all categories use `list_categories()`
+}
+\examples{
+\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Find relevant category
+list_categories()
+
+# Pull IDs
+get_category_ids("berry")
+\dontshow{\}) # examplesIf}
 }

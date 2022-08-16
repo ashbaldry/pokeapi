@@ -8,7 +8,7 @@ Authors@R: c(
 Description: 'PokéAPI' is a lightweight 'API' that allows the user to pull almost any 
     information about 'Pokémon' one can think of. 'pokeapi' provides a wrapper for this
     'API'.
-License: MIT + file LICENCE
+License: MIT + file LICENSE
 Encoding: UTF-8
 Depends: R (>= 2.10)
 Imports: httr2, rappdirs
